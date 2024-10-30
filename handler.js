@@ -144,7 +144,7 @@ export async function handler(chatUpdate) {
         if (!('sWelcome' in chat)) chat.sWelcome = ''
         if (!('useDocument' in chat)) chat.useDocument = false
         if (!('viewOnce' in chat)) chat.viewOnce = false
-        if (!('viewStory' in chat)) chat.viewStory = false
+        if (!('viewStory' in chat)) chat.viewStory = true
         if (!('welcome' in chat)) chat.welcome = false
         if (!('chatbot' in chat)) chat.chatbot = false
         if (!isNumber(chat.expired)) chat.expired = 0
@@ -166,8 +166,8 @@ export async function handler(chatUpdate) {
           sticker: false,
           sWelcome: '',
           useDocument: false,
-          viewOnce: false,
-          viewStory: false,
+          viewOnce: true,
+          viewStory: true,
           welcome: false,
           chatbot: false,
         }
@@ -176,14 +176,14 @@ export async function handler(chatUpdate) {
       if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
       if (settings) {
         if (!('self' in settings)) settings.self = false
-        if (!('autoread' in settings)) settings.autoread = false
+        if (!('autoread' in settings)) settings.autoread = true
         if (!('restrict' in settings)) settings.restrict = false
         if (!('restartDB' in settings)) settings.restartDB = 0
         if (!('status' in settings)) settings.status = 0
       } else
         global.db.data.settings[this.user.jid] = {
           self: false,
-          autoread: false,
+          autoread: true,
           restrict: false,
           restartDB: 0,
           status: 0,
